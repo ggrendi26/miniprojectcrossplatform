@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="start">
+            <ion-menu-button menu="barangsMenu"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Menu Admin</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="presentModalAdd()">
+                <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item-sliding *ngFor="let barang of barangs">
+            <ion-item-options side="start">
+                <ion-item-option color="danger" (click)="presentAlert(barang.id)">
+                    <ion-icon name="trash" slot="icon-only"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+
+            <ion-item (click)="presentModalEdit(barang.id)">
+                <ion-thumbnail slot="start">
+                    <ion-img [src]="barang.foto"></ion-img>
+                </ion-thumbnail>
+                <ion-grid>
+                    <ion-row>{{barang.merek}} {{barang.model}}</ion-row>
+                    <ion-row>Harga : {{barang.harga | currency:"Rp "}}</ion-row>
+                    <ion-row>Tersedia : {{barang.stok}}</ion-row>
+                </ion-grid>
+            </ion-item>
+
+            <ion-item-options side="end">
+                <ion-item-option (click)="presentModalEdit(barang.id)">
+                    <ion-icon name="pencil-outline" slot="icon-only"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+</ion-content>

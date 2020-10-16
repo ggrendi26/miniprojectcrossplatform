@@ -1,0 +1,109 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/home"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Detail Barang</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-img [src]="barang.foto"></ion-img>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <h1>{{barang.merek}} - {{barang.model}}</h1>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-label>Harga:</ion-label>
+            </ion-col>
+            <ion-col>
+                <ion-label>{{barang.harga | currency:"Rp "}}</ion-label>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-label>Stok:</ion-label>
+            </ion-col>
+            <ion-col>
+                <ion-label>{{barang.stok}}</ion-label>
+            </ion-col>
+        </ion-row>
+        <div *ngIf="router.url.substring(1,3) == 'cp'">
+            <ion-row>
+                <ion-col>
+                    <ion-label>Base Clock:</ion-label>
+                </ion-col>
+                <ion-col>
+                    <ion-label>{{barang.base_clock}} Ghz</ion-label>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-label>Boost Clock:</ion-label>
+                </ion-col>
+                <ion-col>
+                    <ion-label>{{barang.boost_clock}} GHz</ion-label>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-label>Jumlah Core:</ion-label>
+                </ion-col>
+                <ion-col>
+                    <ion-label>{{barang.core}}</ion-label>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-label>Thread:</ion-label>
+                </ion-col>
+                <ion-col>
+                    <ion-label>{{barang.thread}}</ion-label>
+                </ion-col>
+            </ion-row>
+        </div>
+        <div *ngIf="this.router.url.substring(1,3) == 'mb'">
+            <ion-row>
+                <ion-col>
+                    <ion-label>Chipset:</ion-label>
+                </ion-col>
+                <ion-col>
+                    <ion-label>{{barang.chipset}}</ion-label>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-label>Support Merk:</ion-label>
+                </ion-col>
+                <ion-col>
+                    <ion-label>{{barang.merek_proces}}</ion-label>
+                </ion-col>
+            </ion-row>
+        </div>
+        <div *ngIf="this.router.url.substring(1,3) == 'rm'">
+            <ion-row>
+                <ion-col>
+                    <ion-label>Speed:</ion-label>
+                </ion-col>
+                <ion-col>
+                    <ion-label>{{barang.speed}} MHz</ion-label>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-label>Ukuran:</ion-label>
+                </ion-col>
+                <ion-col>
+                    <ion-label>{{barang.ukuran}} GB</ion-label>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-grid>
+</ion-content>

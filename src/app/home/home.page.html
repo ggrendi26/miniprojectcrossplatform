@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button menu="barangsMenu"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Home</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="changeGrid()" *ngIf="list == true">
+                <ion-icon name="grid"></ion-icon>
+            </ion-button>
+            <ion-button (click)="changeList()" *ngIf="grid == true">
+                <ion-icon name="list"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <app-list [barangs]="barangs" *ngIf="list == true"></app-list>
+    <app-grid [barangs]="barangs" *ngIf="grid == true"></app-grid>
+</ion-content>

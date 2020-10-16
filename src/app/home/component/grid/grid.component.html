@@ -1,0 +1,17 @@
+<ion-grid>
+    <ion-row>
+        <ion-col class="my-thin-col" size="6" *ngFor="let barang of barangs" [routerLink]="['../', barang.id]">
+            <ion-card>
+                <ion-img [src]="barang.foto"></ion-img>
+                <ion-card-header>
+                    <ion-card-subtitle>{{barang.merek}}</ion-card-subtitle>
+                    <ion-card-title>{{barang.model}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <p>Harga : {{barang.harga | currency:"Rp "}}</p>
+                    <p>Tersedia : {{barang.stok}}</p>
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-grid>

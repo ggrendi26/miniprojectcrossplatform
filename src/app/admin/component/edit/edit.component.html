@@ -1,0 +1,104 @@
+<ion-header>
+    <ion-toolbar color="secondary">
+        <ion-title>Mengubah barang</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button (click)="onCancel()">
+                <ion-icon name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form #form="ngForm" (ngSubmit)="presentAlert(form)">
+        <ion-list>
+            <ion-item>
+                <ion-label position="floating">Url Foto</ion-label>
+                <ion-input type="text" ngModel name="imageUrl" required [(ngModel)]="barang.foto"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Merk</ion-label>
+                <ion-input type="text" ngModel name="merek" required [(ngModel)]="barang.merek"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Model</ion-label>
+                <ion-input type="text" ngModel name="model" required [(ngModel)]="barang.model"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Harga</ion-label>
+                <ion-label position="stacked">Rp</ion-label>
+                <ion-input type="number" ngModel name="harga" required [(ngModel)]="barang.harga"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Stock</ion-label>
+                <ion-input type="number" ngModel name="stok" required [(ngModel)]="barang.stok"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="barang.id.substring(0,2) != 'gp'">
+                <ion-label>Detail Produk</ion-label>
+            </ion-item>
+            <ion-grid *ngIf="barang.id.substring(0,2) == 'cp'">
+                <ion-row>
+                    <ion-col size="6">
+                        <ion-item>
+                            <ion-label position="stacked">Base Clock</ion-label>
+                            <ion-input type="number" ngModel name="base_clock" required [(ngModel)]="barang.base_clock"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-item>
+                            <ion-label position="stacked">Boost Clock</ion-label>
+                            <ion-input type="number" ngModel name="boost_clock" required [(ngModel)]="barang.boost_clock"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="6">
+                        <ion-item>
+                            <ion-label position="stacked">Core Count </ion-label>
+                            <ion-input type="number" ngModel name="core" required [(ngModel)]="barang.core"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-item>
+                            <ion-label position="stacked">Thread Count</ion-label>
+                            <ion-input type="number" ngModel name="thread" required [(ngModel)]="barang.thread"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <ion-grid *ngIf="barang.id.substring(0,2) == 'rm'">
+                <ion-row>
+                    <ion-col size="6">
+                        <ion-item>
+                            <ion-label position="stacked">Speed</ion-label>
+                            <ion-input type="number" ngModel name="speed" required [(ngModel)]="barang.speed"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-item>
+                            <ion-label position="stacked">Ukuran</ion-label>
+                            <ion-input type="number" ngModel name="ukuran" required [(ngModel)]="barang.ukuran"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <ion-grid *ngIf="barang.id.substring(0,2) == 'mb'">
+                <ion-row>
+                    <ion-col size="6">
+                        <ion-item>
+                            <ion-label position="stacked">Chipset</ion-label>
+                            <ion-input type="text" ngModel name="chipset" required [(ngModel)]="barang.chipset"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-item>
+                            <ion-label position="stacked">Merk Processor</ion-label>
+                            <ion-input type="text" ngModel name="merek_proces" required [(ngModel)]="barang.merek_proces"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-list>
+        <ion-button type="submit" expand="block" [disabled]="!form.valid">Submit</ion-button>
+    </form>
+</ion-content>
